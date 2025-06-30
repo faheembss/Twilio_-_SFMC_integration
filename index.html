@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Twilio WhatsApp Configuration</title>
+    <style>
+        body {
+            padding: 20px;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+        }
+
+        .container {
+            max-width: 700px;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin-top: 0;
+            color: #0070d2;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        input[type=text] {
+            width: 95%;
+            margin-top: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+            background-color: #f4f6f9;
+        }
+
+        textarea {
+            width: 95%;
+            height: 120px;
+            margin-top: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .info {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 0.85em;
+            background-color: #f4f6f9;
+            border: 1px solid #e1e5ee;
+            border-radius: 4px;
+        }
+
+        .info strong {
+            color: #c0392b;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Configure Custom WhatsApp Message</h2>
+
+        <!-- NEW FIELD FOR PHONE NUMBER -->
+        <label for="phone-number">Phone Number Field</label>
+        <input id="phone-number" type="text" placeholder="Drag a Data Extension field here" data-binding="inArgument.phoneNumber" readonly />
+
+        <label for="custom-body">Message Body</label>
+        <textarea id="custom-body" placeholder="Type your custom message here... You can also drag DE fields into this box."></textarea>
+
+        <div class="info">
+            <p><strong>Warning:</strong> This will only work if the contact has messaged your Twilio number in the last
+                24 hours.</p>
+        </div>
+    </div>
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/require.js"></script>
+    <script src="js/postmonger.js"></script>
+    <script>
+        (function () {
+            var config = {
+                baseUrl: 'js/'
+            };
+            var dependencies = ['customActivity'];
+            require(config, dependencies);
+        })();
+    </script>
+</body>
+
+</html>

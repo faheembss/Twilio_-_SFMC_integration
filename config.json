@@ -1,0 +1,79 @@
+{
+  "workflowApiVersion": "1.1",
+  "metaData": {
+    "icon": "images/icon.png",
+    "category": "message"
+  },
+  "type": "REST",
+  "lang": {
+    "en-US": {
+      "name": "Twilio WhatsApp (Custom)",
+      "description": "Sends a custom WhatsApp message via Twilio (for testing only)."
+    }
+  },
+  "arguments": {
+    "execute": {
+      "inArguments": [
+        {
+          "phoneNumber": "{{Event.DEAudience-1.PhoneNumber}}"
+        },
+        {
+          "customBody": "Hello from JB"
+        }
+      ],
+      "outArguments": [],
+      "url": "https://8b2d-203-135-23-77.ngrok-free.app/execute",
+      "timeout": 10000,
+      "retryCount": 1,
+      "retryDelay": 1000,
+      "useJwt": true
+    }
+  },
+  "configurationArguments": {
+    "applicationExtensionKey": "{{MC_APP_EXTENSION_KEY}}",
+    "save": {
+      "url": "https://8b2d-203-135-23-77.ngrok-free.app/save",
+      "useJwt": true
+    },
+    "publish": {
+      "url": "https://8b2d-203-135-23-77.ngrok-free.app/publish",
+      "useJwt": true
+    },
+    "validate": {
+      "url": "https://8b2d-203-135-23-77.ngrok-free.app/validate",
+      "useJwt": true
+    }
+  },
+  "userInterfaces": {
+    "configModal": {
+      "height": 400,
+      "width": 600,
+      "url": "index.html"
+    }
+  },
+  "schema": {
+    "arguments": {
+      "execute": {
+        "inArguments": [
+          {
+            "phoneNumber": {
+              "dataType": "Phone",
+              "isNullable": false,
+              "direction": "in",
+              "access": "visible"
+            }
+          },
+          {
+            "customBody": {
+              "dataType": "Text",
+              "isNullable": false,
+              "direction": "in",
+              "access": "visible"
+            }
+          }
+        ],
+        "outArguments": []
+      }
+    }
+  }
+}
